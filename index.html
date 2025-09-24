@@ -4,10 +4,146 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>F7. Mantenimiento</title>
+  <!-- Google Fonts for playful look -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Quicksand', 'Roboto', Arial, sans-serif;
+      background: linear-gradient(135deg, #e0ffef 0%, #ffe0f7 100%);
+      min-height: 100vh;
+    }
+    .navbar {
+      background: linear-gradient(90deg, #00b894 0%, #6c5ce7 100%);
+      border-bottom: 3px solid #00cec9;
+      animation: navbarGlow 3s infinite alternate;
+    }
+    @keyframes navbarGlow {
+      0% { box-shadow: 0 0 8px #00b894;}
+      100% { box-shadow: 0 0 32px #6c5ce7;}
+    }
+    .navbar-brand {
+      font-family: 'Quicksand', cursive;
+      font-size: 1.7rem;
+      letter-spacing: 1.5px;
+      color: #fff !important;
+      display: flex;
+      align-items: center;
+    }
+    /* Animated Icon */
+    .bi-tools {
+      filter: drop-shadow(0 0 6px #fff5);
+      animation: toolSpin 3s infinite linear;
+    }
+    @keyframes toolSpin {
+      0% { transform: rotate(0);}
+      100% { transform: rotate(360deg);}
+    }
+    /* Navbar links */
+    .navbar-nav .nav-link {
+      color: #fff !important;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: background 0.2s, color 0.2s;
+      border-radius: 0.5rem;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+    .navbar-nav .nav-link.active, .navbar-nav .nav-link:hover {
+      background: rgba(255,255,255,0.22);
+      color: #222 !important;
+    }
+    main.container {
+      background: rgba(255,255,255,0.97);
+      border-radius: 2rem;
+      box-shadow: 0 10px 36px 0 #a4fbc4b0;
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+      padding: 3rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    main::before {
+      content: "";
+      position: absolute;
+      top: -50px; left: -60px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, #ffe6fa, #b2f7ef 90%);
+      z-index: 0;
+      border-radius: 50%;
+    }
+    main::after {
+      content: "";
+      position: absolute;
+      bottom: -50px; right: -60px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, #c3cfe2, #00b89440 100%);
+      z-index: 0;
+      border-radius: 50%;
+    }
+    h1.display-5 {
+      font-family: 'Quicksand', cursive;
+      color: #3d0066; /* violeta oscuro, bien contrastante */
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      margin-bottom: 1.2rem;
+      position: relative;
+      z-index: 1;
+      text-shadow: 2px 2px 10px #fff9, 1px 1px 2px #b2f7efcc, 0 2px 8px #00b89444;
+    }
+    .lead {
+      font-size: 1.25rem;
+      color: #6c5ce7;
+      background: #e6fff7;
+      border-left: 5px solid #00b894;
+      padding: 1rem 1.5rem;
+      border-radius: 0 1.5rem 1.5rem 0;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #fd79a8 0%, #00b894 100%);
+      color: #fff;
+      border: none;
+      font-weight: 700;
+      font-family: 'Quicksand', monospace;
+      letter-spacing: 1px;
+      box-shadow: 0px 4px 18px 0 #6c5ce760;
+      border-radius: 1.5rem;
+      padding: 0.75rem 2.2rem;
+      font-size: 1.1rem;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.16s, box-shadow 0.16s, background 0.16s;
+    }
+    .btn-primary:hover, .btn-primary:focus {
+      background: linear-gradient(90deg, #00b894 10%, #fd79a8 100%);
+      color: #6c5ce7;
+      transform: scale(1.05) rotate(-2deg);
+      box-shadow: 0px 8px 30px 0 #00b89455;
+    }
+    .btn-primary:active {
+      transform: scale(0.98) rotate(1deg);
+      box-shadow: 0px 1px 2px #00b89480;
+    }
+    @media (max-width: 576px) {
+      .lead {
+        font-size: 1rem;
+        padding: 0.75rem 1rem;
+      }
+      h1.display-5 {
+        font-size: 2rem;
+      }
+      main.container {
+        padding: 1.3rem 0.5rem;
+      }
+    }
+  </style>
 </head>
-<body class="bg-light">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
     <div class="container">
       <a class="navbar-brand fw-bold" href="#">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-tools me-2" viewBox="0 0 16 16">
@@ -32,14 +168,33 @@
         </ul>
       </div>
     </div>
-  </nav></svg>
+  </nav>
   <main class="container py-5">
     <h1 class="display-5">Trabajamos con Netlify + GitHub (CI/CD)</h1>
     <p class="lead">
-    La Fase 7: Incluye corrección de errores detectados en producción, mejoras continuas, actualizaciones y adaptaciones a nuevos entornos o necesidades.
+      La Fase 7: Incluye corrección de errores detectados en producción, mejoras continuas, actualizaciones y adaptaciones a nuevos entornos o necesidades.
     </p>
-    <button class="btn btn-primary">Botón de la versión 1</button>
+    <button class="btn btn-primary" onclick="showToast()">Botón de la versión 1</button>
+    <!-- Toast para interacción -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+      <div id="demoToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            ¡Interacción exitosa! 🌿✨
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+        </div>
+      </div>
+    </div>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Animación de toast interactivo
+    function showToast() {
+      var toastEl = document.getElementById('demoToast');
+      var toast = new bootstrap.Toast(toastEl);
+      toast.show();
+    }
+  </script>
 </body>
 </html>
